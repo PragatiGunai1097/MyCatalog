@@ -13,8 +13,6 @@ export default function CatalogClient({ items, users}) {
     return 'price_first'
   })
 
-
-
   const [search, setSearch] = useState('')
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -449,9 +447,9 @@ export default function CatalogClient({ items, users}) {
                       ))}
                     </div>
 
-                    <p className="text-green-400 font-bold text-lg mt-2">
+                    {/* <p className="text-green-400 font-bold text-lg mt-2">
                       ${item.price}
-                    </p>
+                    </p> */}
                   </>
                 )}
 

@@ -230,4 +230,13 @@ This project demonstrates:
 * Dynamic UI driven by CMS
 * Scalable frontend architecture
 
+
+## My catalog Project Live Link
+https://my-catalog-five.vercel.app/
+
+## sanity studio link for Schema
+https://catalog-pragati.sanity.studio
+
+## My github link
+https://github.com/PragatiGunai1097/MyCatalog.git
 ---

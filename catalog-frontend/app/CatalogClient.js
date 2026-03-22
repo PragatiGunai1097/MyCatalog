@@ -22,6 +22,12 @@ export default function CatalogClient({ items, users}) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
+
+    // ✅ NEW (Pagination + Loading)
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 8
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
   const el = document.getElementById('devtools-indicator');
   if (el) el.style.display = 'none';
@@ -110,8 +116,23 @@ export default function CatalogClient({ items, users}) {
   }, [])
 
 
-// Login Logic
+// ✅ NEW (skeleton trigger)
+  useEffect(() => {
+    setLoading(true)
+    const timer = setTimeout(() => setLoading(false), 800)
+    return () => clearTimeout(timer)
+  }, [search, selectedCategory, mapping])
 
+  // ✅ NEW (reset page)
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [search, selectedCategory])
+
+  
+
+
+
+// Login Logic
 
   const handleLogin = () => {
     const validUser = users?.find(
@@ -142,10 +163,12 @@ export default function CatalogClient({ items, users}) {
     if (mapping === 'price_first') return a.price - b.price
     return (b.attributes?.rating || 0) - (a.attributes?.rating || 0)
   })
-
-
-
   
+
+  /* ✅ ADD HERE (IMPORTANT) */
+const startIndex = (currentPage - 1) * itemsPerPage
+const endIndex = startIndex + itemsPerPage
+const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
@@ -154,6 +177,8 @@ export default function CatalogClient({ items, users}) {
       </span>
     ))
   }
+
+
 
   return (
     <div className="bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0a192f] min-h-screen text-white">
@@ -392,52 +417,70 @@ export default function CatalogClient({ items, users}) {
             : 'flex flex-col gap-4'
         }`}>
 
-          {sortedItems.map(item => (
-            <div
-              key={item._id}
-              className={`bg-slate-800/70 backdrop-blur-md rounded-2xl p-4 
+
+
+{loading ? (
+            Array.from({ length: 8 }).map((_, i) => (
+                
+                <div key={i} className="bg-slate-800/70 rounded-2xl p-4 animate-pulse space-y-3">
+                 <div className="w-full h-40 bg-slate-700 rounded-xl"></div>
+                 <div className="h-4 bg-slate-700 rounded w-3/4"></div>
+                 <div className="h-3 bg-slate-700 rounded w-1/2"></div>
+                 <div className="h-3 bg-slate-700 rounded w-1/3"></div>
+                </div>
+
+
+            ))
+          ) : (
+
+            // ✅ My FUNCTION (just added index condition)
+            sortedItems.map((item, index) => {
+              if (index < startIndex || index >= endIndex) return null
+
+              return (
+                <div
+                  key={item._id}
+                  className={`bg-slate-800/70 backdrop-blur-md rounded-2xl p-4 
               shadow-[0px_0px_56px_-8px_rgba(57,133,172,0.54)] 
               border-b-2 border-[#732cf0]
               hover:shadow-[0px_0px_70px_-5px_rgba(57,133,172,0.8)]
               hover:-translate-y-1 transition-all duration-300
-              ${view === 'list' ? 'flex gap-4 items-center' : ''}`}
-            >
+              
+                  ${view === 'list' ? 'flex gap-4 items-center' : ''}`}
+                >
 
-              {item.image && (
-                <img
-                  src={urlFor(item.image).width(400).url()}
-                  className={`${view === 'list' ? 'w-32 h-32' : 'w-full h-48 mb-3'} object-cover rounded-xl`}
-                />
-              )}
+                  {item.image && (
+                    <img
+                      src={urlFor(item.image).width(400).url()}
+                      className={`${view === 'list' ? 'w-32 h-32' : 'w-full h-48 mb-3'} object-cover rounded-xl`}
+                    />
+                  )}
 
-              <div className="flex-1">
+                  <div className="flex-1">
+                    <h4 className="font-semibold">{item.title}</h4>
+                    <p className="text-sm text-slate-400">{item.category}</p>
 
-                <h4 className="font-semibold">{item.title}</h4>
-                <p className="text-sm text-slate-400">{item.category}</p>
+                    <div className="flex items-center mt-1">
+                      {renderStars(Math.round(item?.attributes?.rating || 0))}
+                    </div>
 
-                <div className="flex items-center mt-1">
-                  {renderStars(Math.round(item?.attributes?.rating || 0))}
-                  <span className="ml-2 text-sm text-slate-400">
-                    {item?.attributes?.rating}
-                  </span>
-                </div>
-
-                {/* 🔥 PRICE / SPECS LOGIC */}
-                {mapping === 'price_first' ? (
-                  <>
-                    <p className="text-green-400 font-bold text-lg mt-2">
-                      ${item.price}
-                    </p>
-
-                    <div className="text-sm mt-2 space-y-1">
+                    {mapping === 'price_first' ? (
+                      <>
+                      <p className="text-green-400 font-bold text-lg mt-2">
+                        ${item.price}
+                      </p>
+                      <div className="text-sm mt-2 space-y-1">
                       {Object.entries(item.attributes || {}).map(([k, v]) => (
                         <div key={k}>
                           <span className="font-semibold">{k}:</span> {v}
                         </div>
                       ))}
                     </div>
-                  </>
-                ) : (
+
+                      </>
+
+
+                    ) : (
                   <>
                     <div className="text-sm mt-2 space-y-1">
                       {Object.entries(item.attributes || {}).map(([k, v]) => (
@@ -453,9 +496,38 @@ export default function CatalogClient({ items, users}) {
                   </>
                 )}
 
-              </div>
-            </div>
-          ))}
+                  </div>
+                  
+                </div>
+
+
+
+              )
+            })
+          )}
+        
+
+
+       {/* ✅ PAGINATION UI */}
+{!loading && totalPages > 1 && (
+  <div className="flex justify-right mt-6 gap-2">
+    {[...Array(totalPages)].map((_, i) => (
+      <button
+        key={i}
+        onClick={() => {
+          setCurrentPage(i + 1)
+          document.getElementById('Prodictid')?.scrollIntoView({ behavior: 'smooth' })
+        }}
+        className={`px-3 py-1 rounded ${
+          currentPage === i + 1 ? 'bg-blue-500' : 'bg-slate-700'
+        }`}
+      >
+        {i + 1}
+      </button>
+    ))}
+  </div>
+)}
+
 
         </div>
       </div>
@@ -466,7 +538,7 @@ export default function CatalogClient({ items, users}) {
       style={{
         backgroundColor: "var(--color-surface-alt)",
         borderColor: "var(--color-border)",
-        maxHeight: "120px",
+        
         marginTop: "10%",
         border: "unset",
         boxShadow: "0 16px 40px rgb(29 130 196 / 34%)",

@@ -1,7 +1,5 @@
 # 🛍️ Catalog Page – Headless CMS (Sanity + Next.js)
 
----
-
 ## 🚀 Overview
 
 This project is a dynamic catalog page built using a **headless CMS (Sanity)** and a **Next.js frontend**. It demonstrates server-side rendering, CMS-driven UI, and role-based content visibility.
@@ -209,16 +207,17 @@ pragati@MacBook-Air-2 catalog-frontend % npx jest
     ✓ price_first sorts items by price
     ✓ specs_first sorts items by rating
 
+📦 Loading & Pagination
+🔄 Loading
+Triggered when user searches or changes category
+Displays a loader or skeleton UI while data updates
+Improves user experience by avoiding empty or sudden changes
 
-## 📌 Future Improvements
+📄 Pagination
+Splits products into multiple pages
+Shows limited items per page for better performance
+Displays page numbers only when needed
 
-* Add real authentication (NextAuth)
-* Add pagination
-* Add sorting (price, rating)
-* Improve accessibility
-* Add testing
-
----
 
 ## 🎯 Conclusion
 
@@ -229,14 +228,16 @@ This project demonstrates:
 * Role-based business logic
 * Dynamic UI driven by CMS
 * Scalable frontend architecture
+* Loading enhances user experience
+* Pagination improves performance and scalability
 
 
-## My catalog Project Live Link
+## My Catalog Project Live Link
 https://my-catalog-five.vercel.app/
 
-## sanity studio link for Schema
+## Sanity studio link for Schema
 https://catalog-pragati.sanity.studio
 
-## My github link
+## My Github link
 https://github.com/PragatiGunai1097/MyCatalog.git
 ---

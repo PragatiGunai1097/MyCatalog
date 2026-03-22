@@ -305,7 +305,7 @@ export default function CatalogClient({ items, users}) {
       </div>
 
         <div className="col-span-6 row-span-5 reveal-up d3 float-b">
-          <img src="\Iimages\hero-img2.png" className="cat-card w-full h-full object-cover rounded-xl"/>
+          <img src="\Images\hero-img2.png" className="cat-card w-full h-full object-cover rounded-xl"/>
         </div>
 
         <div className="col-span-3 row-span-4 reveal-up d4 float-c">

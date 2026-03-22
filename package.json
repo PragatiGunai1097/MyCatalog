@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "jest": "^29.7.0",
+    "lucide-react": "^0.577.0"
+  }
+}

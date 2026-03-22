@@ -301,23 +301,23 @@ export default function CatalogClient({ items, users}) {
 
         <div className="col-span-6 row-span-7 reveal-up d2 float-a">
        
-<img src="/images/hero-img1.png" className="cat-card w-full h-full object-cover rounded-xl"/>
+<img src="\Images\hero-img1.png" className="cat-card w-full h-full object-cover rounded-xl"/>
       </div>
 
         <div className="col-span-6 row-span-5 reveal-up d3 float-b">
-          <img src="/images/hero-img2.png" className="cat-card w-full h-full object-cover rounded-xl"/>
+          <img src="\Iimages\hero-img2.png" className="cat-card w-full h-full object-cover rounded-xl"/>
         </div>
 
         <div className="col-span-3 row-span-4 reveal-up d4 float-c">
-          <img src="/images/hero-img3.png" className="cat-card w-full h-full object-cover rounded-xl"/>
+          <img src="\Images\hero-img3.png" className="cat-card w-full h-full object-cover rounded-xl"/>
         </div>
 
         <div className="col-span-3 row-span-4 reveal-up d5 float-a">
-          <img src="/images/hero-img4.png" className="cat-card w-full h-full object-cover rounded-xl"/>
+          <img src="\Images\hero-img4.png" className="cat-card w-full h-full object-cover rounded-xl"/>
         </div>
 
         <div className="col-span-6 row-span-5 reveal-up d6 float-b">
-          <img src="/images/hero-img5.png" className="cat-card w-full h-full object-cover rounded-xl"/>
+          <img src="\Images\hero-img5.png" className="cat-card w-full h-full object-cover rounded-xl"/>
         </div>
 {/* ===== FLOATING STAT CHIP ===== */}
 <div className=" item-card1 col-span-3 row-span-3 col-start-7 row-start-10 reveal-up d5 z-30 flex items-center justify-center">

@@ -217,4 +217,8 @@
     padding: 4px 8px;  /* better spacing */
     text-align: center;
   }
+  
+  #hero .tag2 {
+    font-size: 56px !important;
+}
 }

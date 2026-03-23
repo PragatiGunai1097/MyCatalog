@@ -178,6 +178,8 @@ const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
     ))
   }
 
+  
+
 
 
   return (
@@ -271,7 +273,7 @@ const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
 
 
 {/* ================= HERO ================= */}
-<section id="hero" className="relative w-full max-w-7xl mx-auto px-5 lg:px-10 pt-12 pb-16 overflow-hidden" style={{marginTop: '2%', marginBottom: '4%'}}>
+<section id="hero" className="relative w-full max-w-7xl mx-auto px-5 lg:px-10 pt-12 pb-16 overflow-hidden" style={{marginTop: '4%', marginBottom: '4%'}}>
 
   {/* Glow */}
   <div className="absolute inset-0 -z-10">
@@ -510,7 +512,7 @@ const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
 
        {/* ✅ PAGINATION UI */}
 {!loading && totalPages > 1 && (
-  <div className="flex justify-right mt-6 gap-2">
+  <div className="col-span-full flex justify-center mt-8 gap-2 pr-2">
     {[...Array(totalPages)].map((_, i) => (
       <button
         key={i}
@@ -518,7 +520,7 @@ const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
           setCurrentPage(i + 1)
           document.getElementById('Prodictid')?.scrollIntoView({ behavior: 'smooth' })
         }}
-        className={`px-3 py-1 rounded ${
+        className={`px-3 py-1 rounded-full ${
           currentPage === i + 1 ? 'bg-blue-500' : 'bg-slate-700'
         }`}
       >
@@ -594,7 +596,7 @@ const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
 
             <input
               placeholder="Username"
-              className="w-full mb-3 p-2 border rounded"
+              className="w-full mb-3 p-2  rounded"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -602,7 +604,7 @@ const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
             <input
               type="password"
               placeholder="Password"
-              className="w-full mb-3 p-2 border rounded"
+              className="w-full mb-3 p-2  rounded"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

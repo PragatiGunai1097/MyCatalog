@@ -273,7 +273,7 @@ const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
 
 
 {/* ================= HERO ================= */}
-<section id="hero" className="relative w-full max-w-7xl mx-auto px-5 lg:px-10 pt-12 pb-16 overflow-hidden" style={{marginTop: '4%', marginBottom: '4%'}}>
+<section id="hero" className="relative w-full max-w-7xl mx-auto px-5 lg:px-10 pt-12 pb-16 overflow-hidden" style={{marginTop: '2%', marginBottom: '4%'}}>
 
   {/* Glow */}
   <div className="absolute inset-0 -z-10">
@@ -612,11 +612,12 @@ const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
             <div className="flex justify-between">
              <button
   onClick={() => {
-    handleLogin()
-
-    document.getElementById('Prodictid')?.scrollIntoView({
+     document.getElementById('Prodictid')?.scrollIntoView({
       behavior: 'smooth'
     })
+    handleLogin()
+
+    
   }}
   className="bg-green-500 text-white px-4 py-2 rounded"
 >

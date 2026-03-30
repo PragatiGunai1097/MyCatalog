@@ -183,7 +183,7 @@ const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
 
 
   return (
-    <div className="bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0a192f] min-h-screen text-white">
+    <div className="bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0a192f] min-h-screen text-white" id="new_bg_color">
 
       {/*  HEADER */}
       <div className="sticky top-0 z-50 backdrop-blur-xl bg-slate-900/70 border-b border-slate-700 shadow-[0_16px_40px_rgba(29,130,196,0.34)]">
@@ -273,7 +273,7 @@ const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
 
 
 {/* ================= HERO ================= */}
-<section id="hero" className="relative w-full max-w-7xl mx-auto px-5 lg:px-10 pt-12 pb-16 overflow-hidden" style={{marginTop: '2%', marginBottom: '4%'}}>
+<section id="hero" className="relative w-full max-w-7xl mx-auto px-5 lg:px-10 pt-12 pb-16 overflow-hidden" style={{marginTop: '4%', marginBottom: '4%'}}>
 
   {/* Glow */}
   <div className="absolute inset-0 -z-10">
@@ -540,7 +540,7 @@ const totalPages = Math.ceil(sortedItems.length / itemsPerPage)
       style={{
         backgroundColor: "var(--color-surface-alt)",
         borderColor: "var(--color-border)",
-        
+        padding: "3%",
         marginTop: "10%",
         border: "unset",
         boxShadow: "0 16px 40px rgb(29 130 196 / 34%)",

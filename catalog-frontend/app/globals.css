@@ -222,3 +222,16 @@
     font-size: 56px !important;
 }
 }
+
+#new_bg_color{
+    background: linear-gradient(99deg, #0f1124 0%, #194f61 30%, #384b84 60%, #889ccb 100%);
+    background-size: 300% 300%;
+    animation: bg-shift 14s ease infinite;
+
+}
+
+#Prodictid{
+  padding-top: 3%;
+  box-shadow: 0 16px 40px rgb(29 130 196 / 34%);
+
+}
